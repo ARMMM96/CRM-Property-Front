@@ -29,7 +29,7 @@
               "bootswatch/dist/flatly/bootstrap.min.css"
             ],
             "scripts": [
-              "bootstrap/dist/js/bootstrap.min.js"
+              "bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
