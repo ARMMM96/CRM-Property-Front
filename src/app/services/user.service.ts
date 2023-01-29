@@ -24,7 +24,10 @@ export class UserService {
   userInfo(): Observable<any> {
     return this.http.get(`${this.apiUrl}/me`)
   }
-
+ 
+  retisterUser(obj: any): Observable<any>{
+    return this.http.post(`${this.apiUrl}/register`, obj)
+  }
 
 
 
