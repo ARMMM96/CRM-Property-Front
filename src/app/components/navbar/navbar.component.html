@@ -37,7 +37,7 @@
                         <img src="{{userImage}}" width="40" height="40" class="rounded-circle" *ngIf="userImage">
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-                        <a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
+                        <a class="dropdown-item" routerLink="/dashboard" *ngIf="showDashBoredLink">Dashboard</a>
                         <a class="dropdown-item" routerLink="/profile">Edit Profile</a>
                         <a class="dropdown-item " (click)="logOut()">Log Out</a>
                     </div>
