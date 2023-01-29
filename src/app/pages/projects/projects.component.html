@@ -1,2 +1,4 @@
 <app-navbar></app-navbar>
-<app-card></app-card>
+<div class="container">
+    <app-card *ngFor="let project of projectsData" [project]="project"></app-card>
+</div>

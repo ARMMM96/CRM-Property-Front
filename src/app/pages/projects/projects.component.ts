@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ContentService } from 'src/app/services/content.service';
-import { of } from 'rxjs';
 
 
 @Component({
@@ -11,14 +10,25 @@ import { of } from 'rxjs';
 export class ProjectsComponent {
 
 
+  projectsData: any
+
   constructor(private content: ContentService) {
     this.content.projects().subscribe(data => {
-      console.log(data)
+      this.content.projects().subscribe({
+        next: (res) => {
+          this.projectsData = res.data
+          console.log(res.data)
+        }
+      })
+
     })
 
   }
 
 
+  getProjects() {
+
+  }
 
 
 }
