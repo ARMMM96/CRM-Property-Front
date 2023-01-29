@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-hero-section',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./hero-section.component.css']
 })
 export class HeroSectionComponent {
+
+  constructor(protected user: UserService) {}
 
 }

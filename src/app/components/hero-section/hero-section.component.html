@@ -2,11 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-6 pt-3 mb-5 mb-lg-0">
-                <h1 class="site-headline font-weight-bold mb-3">WE Offer MORE THAN REAL ESTATE WE OFFER YOU A LIFE STYLE</h1>
-                <div class="site-tagline mb-4">Find your dreaming units with different variations of prices and many places close to the downtown</div>
+                <h1 class="site-headline font-weight-bold mb-3">WE OFFER MORE THAN REAL ESTATE WE OFFER YOU A LIFE STYLE
+                </h1>
+                <div class="site-tagline mb-4">Find your dreaming units with different variations of prices and many
+                    places close to the downtown</div>
                 <div class="cta-btns mb-lg-3">
 
-                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">
+                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" routerLink="/register"  *ngIf="!user.isLogIn">
                         Register
                         <svg class="svg-inline--fa fa-circle-right ms-2 arow" aria-hidden="true" focusable="false"
                             data-prefix="fas" data-icon="circle-right" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +18,7 @@
                             </path>
                         </svg>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4" routerLink="/login" *ngIf="!user.isLogIn">
                         Login
                         <svg class="svg-inline--fa fa-circle-right ms-2 arow" aria-hidden="true" focusable="false"
                             data-prefix="fas" data-icon="circle-right" role="img" xmlns="http://www.w3.org/2000/svg"
