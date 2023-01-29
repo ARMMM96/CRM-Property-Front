@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+<!-- Reactive Form  -->
+<div class="bg-light">
+
+    <section class="vh-100">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px;">
+                        <div class="card-body p-md-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
+
+                                    <form class="row gy-4 " [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+
+                                        <input type="email" class="form-control" placeholder="Email"
+                                            formControlName="email">
+
+
+                                        <div class="alert alert-danger" *ngIf="isSubmit && userEmail?.invalid">
+
+                                            <div *ngIf="userEmail?.errors?.['required']">
+                                                email is required
+                                            </div>
+                                            <div *ngIf="userEmail?.errors?.['email']">
+                                                Invalid Email
+                                            </div>
+
+                                        </div>
+
+                                        <input type="password" class="form-control" placeholder="Password"
+                                            formControlName="password">
+
+                                        <div class="alert alert-danger"
+                                            *ngIf="isSubmit && userData?.['password']?.invalid">
+                                            <div *ngIf="userData?.['password']?.errors?.['required']">
+                                                password is required
+                                            </div>
+                                        </div>
+
+                                        <div class="col-1">
+                                            <button class="btn btn-primary  btn-lg">Login</button>
+                                        </div>
+
+
+                                        <div class="alert alert-danger" *ngIf="isSubmit && errorFlag">
+                                            <div>
+                                                {{errorMsg}}
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                    <img src="https://img.freepik.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg?w=826&t=st=1674953500~exp=1674954100~hmac=520ebf3735ffb23fa826814b8d1eace172041285b28b8360bf7b3c5cc2a40170"
+                                        class="img-fluid" alt="Sample image">
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+<app-footer></app-footer>
