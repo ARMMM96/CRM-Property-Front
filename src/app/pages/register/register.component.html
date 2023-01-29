@@ -12,7 +12,7 @@
 
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                  <form class="mx-1 mx-md-4" [formGroup]="registerForm" (change)="handleRegister()">
+                  <form class="mx-1 mx-md-4" [formGroup]="registerForm" (submit)="handleRegister()">
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -28,6 +28,49 @@
                         <label class="form-label" for="LastName">Last Name</label>
                       </div>
                     </div>
+
+
+
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <label class="form-label" for="gender">Gender</label>
+                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="male"
+                            formControlName="gender" value="male">
+                          <label class="form-check-label" for="male">
+                            Male
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="female"
+                            formControlName="gender" value="female">
+                          <label class="form-check-label" for="female">
+                            Female
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="number" id="Age" class="form-control" formControlName="age" />
+                        <label class="form-label" for="Age">Age</label>
+                      </div>
+                    </div>
+
+
+
+
+
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -62,34 +105,21 @@
                       </div>
                     </div>
 
-
-
-
-
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <label class="form-label" for="RepeatedPassword">Gender</label>
-                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="male" formControlName="gender">
-                          <label class="form-check-label" for="male">
-                            Male
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="female" formControlName="gender">
-                          <label class="form-check-label" for="female">
-                            Female
-                          </label>
-                        </div>
+                    <div class="alert alert-danger" *ngIf="isSubmit && errorFlag">
+                      <div>
+                        {{errorMsg}}
                       </div>
                     </div>
 
 
 
 
+
+
+
+
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="button" class="btn btn-primary btn-lg">Register</button>
+                      <button type="button" class="btn btn-primary btn-lg" (click)="handleRegister()">Register</button>
                     </div>
 
                   </form>
