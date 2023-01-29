@@ -1,25 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand">REAL ESTATE CRM</a>
+        <a class="navbar-brand" routerLink="">REAL ESTATE CRM</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto ">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" routerLink="">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link active" routerLink="/projects" *ngIf="user.isLogIn">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" routerLink="/login" *ngIf="!user.isLogIn">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" routerLink="/register" *ngIf="!user.isLogIn">Register</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact">Contact</a>
+                </li>
+
             </ul>
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown" *ngIf="user.isLogIn">
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop2" type="button" class="btn btn-primary   dropdown-toggle "
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="username">
+                            {{userName | titlecase}}
+                        </span>
+
+                        <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                            width="40" height="40" class="rounded-circle" *ngIf="!userImage">
+                        <img src="{{userImage}}" width="40" height="40" class="rounded-circle" *ngIf="userImage">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                        <a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
+                        <a class="dropdown-item" routerLink="/profile">Edit Profile</a>
+                        <a class="dropdown-item " (click)="logOut()">Log Out</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
 </nav>
