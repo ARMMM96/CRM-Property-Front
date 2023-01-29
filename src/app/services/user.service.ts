@@ -29,6 +29,9 @@ export class UserService {
     return this.http.post(`${this.apiUrl}/register`, obj)
   }
 
+  getUserRole(id: any):Observable <any>{
+    return this.http.get(`${this.mainUrl}/api/roles/single/${id}`)
+  }
 
 
 
