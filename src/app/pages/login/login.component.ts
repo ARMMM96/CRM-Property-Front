@@ -22,7 +22,7 @@ export class LoginComponent {
   errorFlag = false
   errorMsg = ''
 
-
+  userRoleId = ''
 
 
   constructor(private user: UserService, private router: Router) { }
@@ -40,8 +40,13 @@ export class LoginComponent {
           next: (res) => {
             localStorage.setItem('token', res.data.token)
             this.user.isLogIn = true
-            this.router.navigate(['test', 'login'])
-
+            if (res.data.user.role) {
+              localStorage.setItem('role', res.data.user.role)
+              this.userRoleId = res.data.user.role
+              console.log(this.userRoleId)
+            } else {
+              localStorage.setItem('role', 'customer')
+            }
           },
           error: (e) => {
             console.log(e)
@@ -53,7 +58,7 @@ export class LoginComponent {
               this.errorMsg = `Something went wrong please make sure that you have written correct password`
             }
           },
-          complete: () => this.router.navigateByUrl('/')
+          complete: () => this.router.navigateByUrl('/profile')
         }
       )
     }
