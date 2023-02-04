@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav ms-auto ">
                 <li class="nav-item">
-                    <a class="nav-link active" routerLink="home">Home</a>
+                    <a class="nav-link " routerLink="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" routerLink="/projects" *ngIf="user.isLogIn">Projects</a>
+                    <a class="nav-link " routerLink="/projects" *ngIf="user.isLogIn">Projects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/login" *ngIf="!user.isLogIn">Login</a>
@@ -21,6 +21,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about">About</a>
                 </li>
 
             </ul>
