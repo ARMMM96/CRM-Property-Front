@@ -1,6 +1,4 @@
-<app-navbar></app-navbar>
-
-<div class="bg-light pt-5 pb-4">
+<div class=" pt-5 pb-4">
   <section class="vh-80 ">
     <div class="container h-100 ">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -12,7 +10,7 @@
 
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                  <form class="mx-1 mx-md-4" [formGroup]="registerForm" (submit)="handleRegister()">
+                  <form class="mx-1 mx-md-4" [formGroup]="registerForm" (keyup.enter)="handleRegister()">
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -21,16 +19,65 @@
                         <label class="form-label" for="FirstName">First Name</label>
                       </div>
                     </div>
+
+                    <div class=" alert alert-danger  d-flex flex-row align-items-center mb-4"
+                      *ngIf="isSubmit && firstName?.invalid">
+
+                      <div *ngIf="firstName?.errors?.['required']" class=" form-outline flex-fill mb-0">
+                        First Name is required
+                      </div>
+                      <div *ngIf="firstName?.errors?.['pattern']">
+                        Invalid Name name must be chracters
+                        <br>
+                        {{firstName?.errors?.['pattern'] |json}}
+                      </div>
+
+                      <div *ngIf="firstName?.errors?.['minlength']">
+                        Min length is 3
+                        <br>
+                        {{firstName?.errors?.['minlength'] |json}}
+                      </div>
+                      <div *ngIf="firstName?.errors?.['maxlength']">
+                        Max length is 10
+                        <br>
+                        {{firstName?.errors?.['maxlength'] |json}}
+                      </div>
+                    </div>
+
+
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <input type="text" id="LastName" class="form-control" formControlName="lastName" />
                         <label class="form-label" for="LastName">Last Name</label>
                       </div>
+
                     </div>
 
+                    <div class=" alert alert-danger  d-flex flex-row align-items-center mb-4"
+                      *ngIf="isSubmit && lastName?.invalid">
 
+                      <div *ngIf="lastName?.errors?.['required']" class=" form-outline flex-fill mb-0">
+                        Last Name is required
+                      </div>
+                      <div *ngIf="lastName?.errors?.['pattern']">
+                        Invalid Name name must be chracters
+                        <br>
+                        {{lastName?.errors?.['pattern'] |json}}
+                      </div>
 
+                      <div *ngIf="lastName?.errors?.['minlength']">
+                        Min length is 3
+                        <br>
+                        {{lastName?.errors?.['minlength'] |json}}
+                      </div>
+
+                      <div *ngIf="lastName?.errors?.['maxlength']">
+                        Max length is 10
+                        <br>
+                        {{lastName?.errors?.['maxlength'] |json}}
+                      </div>
+                    </div>
 
 
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -44,6 +91,7 @@
                             Male
                           </label>
                         </div>
+
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="flexRadioDefault" id="female"
                             formControlName="gender" value="female">
@@ -56,7 +104,13 @@
 
 
 
+                    <div class=" alert alert-danger  d-flex flex-row align-items-center mb-4"
+                      *ngIf="isSubmit && gender?.invalid">
 
+                      <div *ngIf="gender?.errors?.['required']" class=" form-outline flex-fill mb-0">
+                        This feld is required
+                      </div>
+                    </div>
 
 
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -66,6 +120,30 @@
                         <label class="form-label" for="Age">Age</label>
                       </div>
                     </div>
+
+
+                    <div class=" alert alert-danger  d-flex flex-row align-items-center mb-4"
+                      *ngIf="isSubmit && age?.invalid">
+
+                      <div *ngIf="age?.errors?.['required']" class=" form-outline flex-fill mb-0">
+                        Age is required
+                      </div>
+
+                      <div *ngIf="age?.errors?.['min']">
+                        Min age is 18
+                        <br>
+                        {{age?.errors?.['min'] |json}}
+                      </div>
+
+                      <div *ngIf="age?.errors?.['max']">
+                        Max age is 60
+                        <br>
+                        {{age?.errors?.['max'] |json}}
+                      </div>
+                    </div>
+
+
+
 
 
 
@@ -80,13 +158,79 @@
                       </div>
                     </div>
 
+
+
+
+
+                    <div class=" alert alert-danger  d-flex flex-row align-items-center mb-4"
+                      *ngIf="isSubmit && email?.invalid">
+
+                      <div *ngIf="email?.errors?.['required']" class=" form-outline flex-fill mb-0">
+                        Email is required
+                      </div>
+
+                      <div *ngIf="email?.errors?.['pattern']">
+                        Invalid Email
+                        <br>
+                        {{email?.errors?.['pattern'] |json}}
+                      </div>
+                      <br>
+                      <div *ngIf="email?.errors?.['email']">
+                        Invalid Email
+                        <br>
+                        {{email?.errors?.['max'] |json}}
+                      </div>
+                    </div>
+
+
+
+
+
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="email" id="phoneNumber" class="form-control" formControlName="phoneNum" />
+                        <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNum" />
                         <label class="form-label" for="phoneNumber">Phone Number</label>
                       </div>
                     </div>
+
+
+
+
+
+                    <div class=" alert alert-danger  d-flex flex-row align-items-center mb-4"
+                      *ngIf="isSubmit && phoneNum?.invalid">
+
+                      <div *ngIf="phoneNum?.errors?.['required']" class=" form-outline flex-fill mb-0">
+                        Phone number required
+                      </div>
+
+                      <div *ngIf="phoneNum?.errors?.['minlength']">
+                        Min number is 11
+                        <br>
+                        {{phoneNum?.errors?.['min'] |json}}
+                      </div>
+
+                      <div *ngIf="phoneNum?.errors?.['maxlength']">
+                        Max number is 11
+                        <br>
+                      </div>
+                      <div *ngIf="phoneNum?.errors?.['pattern']">
+                        Invalid Phone number
+                        <br>
+                        {{phoneNum?.errors?.['pattern'] |json}}
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
@@ -95,6 +239,37 @@
                         <label class="form-label" for="password">Password</label>
                       </div>
                     </div>
+
+
+
+
+
+                    <div class=" alert alert-danger  d-flex flex-row align-items-center mb-4"
+                      *ngIf="isSubmit && password?.invalid">
+
+                      <div *ngIf="password?.errors?.['required']" class=" form-outline flex-fill mb-0">
+                        Password number required
+                      </div>
+
+                      <div *ngIf="phoneNum?.errors?.['minlength']">
+                        Min number is 11
+                        <br>
+                        {{password?.errors?.['min'] |json}}
+                      </div>
+
+                      <div *ngIf="password?.errors?.['maxlength']">
+                        Max number is 11
+                        <br>
+                      </div>
+                      <div *ngIf="password?.errors?.['pattern']">
+                        Invalid Phone number
+                        <br>
+                        {{password?.errors?.['pattern'] |json}}
+                      </div>
+                    </div>
+
+
+
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-key fa-lg me-3 fa-fw"></i>
@@ -105,6 +280,9 @@
                       </div>
                     </div>
 
+
+
+
                     <div class="alert alert-danger" *ngIf="isSubmit && errorFlag">
                       <div>
                         {{errorMsg}}
@@ -113,13 +291,8 @@
 
 
 
-
-
-
-
-
+                    <button type="button" class="btn btn-primary btn-lg">Register</button>
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="button" class="btn btn-primary btn-lg" (click)="handleRegister()">Register</button>
                     </div>
 
                   </form>
@@ -140,5 +313,3 @@
     </div>
   </section>
 </div>
-
-<app-footer></app-footer>
