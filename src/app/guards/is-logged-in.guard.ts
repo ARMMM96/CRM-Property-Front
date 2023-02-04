@@ -15,7 +15,6 @@ export class IsLoggedInGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let token = localStorage.getItem('token')
     if (token) {
-      this.router.navigateByUrl('')
       return true;
     }
     if(!token){
