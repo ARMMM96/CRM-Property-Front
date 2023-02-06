@@ -1,12 +1,10 @@
-<app-navbar></app-navbar>
-
-<div class="container mt-5 mb-5">
+<div class="container ">
     <section class="bg-light ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 mb-4 mb-sm-5">
                     <div class="card card-style1 border-0">
-                        <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                        <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7" *ngIf="!showEditForom">
                             <div class="row align-items-center">
                                 <div class="col-lg-4 mb-4 mb-lg-0">
                                     <img src="{{userImage}}" alt="Profile" width="315" height="315" *ngIf="userImage">
@@ -14,33 +12,131 @@
                                 <div class="col-lg-7 px-xl-10">
                                     <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
                                         <h3 class="h2 text-white mb-0"> {{userName| titlecase}}</h3>
-                                        <span class="text-primary">Coach</span>
+                                        <span class="text-primary">{{currentUserPosition}}</span>
                                     </div>
                                     <ul class="list-unstyled mb-1-9">
-                                        <li class="mb-2 mb-xl-3 display-28"><span
-                                                class="display-26 text-secondary me-2 font-weight-600">Position:</span>
+                                        <li class="mb-2 mt-2 mb-xl-3 display-28" *ngIf="currentUserPosition"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">{{currentUserPosition}}:</span>
                                             Coach</li>
-                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                        <li class="mb-2 mt-2 mb-xl-3 display-28"><span
                                                 class="display-26 text-secondary me-2 font-weight-600">Eage:</span>
-                                            {{currentUser.age}}
+                                            {{currentUserAge}}
                                             Years</li>
                                         <li class="mb-2 mb-xl-3 display-28"><span
                                                 class="display-26 text-secondary me-2 font-weight-600">Email:</span>
-                                            {{currentUser.email}}</li>
-                                        <li class="mb-2 mb-xl-3 display-28"><span
-                                                class="display-26 text-secondary me-2 font-weight-600">Website:</span>
-                                            www.example.com</li>
-                                        <li class="display-28"><span
+                                            {{currentUserEmail}}</li>
+
+                                        <li class="display-28  mb-xl-3 "><span
                                                 class="display-26 text-secondary me-2 font-weight-600">Phone:</span>
-                                            {{currentUser.phoneNum}}</li>
+                                            {{currentUserPhone}}</li>
+                                        <li class="display-28  mb-xl-3" *ngFor="let address of currentUserAddresses ">
+                                            <span
+                                                class="display-26 text-secondary me-2 font-weight-600">Addresses:</span>
+                                            Type: {{address['addressType'] }}
+                                            Details: {{address['details'] }}
+                                        </li>
+
+                                        <li class="display-28  mb-xl-3 "><span
+                                                class="display-26 text-secondary me-2 font-weight-600">
+                                                <button class="btn btn-success btn-sm rounded-0" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Edit"
+                                                    (click)="toggleForm()"><i class="fa fa-edit"></i>
+                                                    Edit Profile
+                                                </button>
+                                            </span>
+                                        </li>
+
                                     </ul>
                                     <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
-                                        <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
+                                        <li><a href="www.facebook.com"><i class="ti-twitter-alt"></i></a></li>
                                         <li><a href="#!"><i class="ti-facebook"></i></a></li>
                                         <li><a href="#!"><i class="ti-pinterest"></i></a></li>
                                         <li><a href="#!"><i class="ti-instagram"></i></a></li>
                                     </ul>
+
                                 </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7" *ngIf="showEditForom">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4 mb-4 mb-lg-0">
+                                    <img src="{{userImage}}" alt="Profile" width="315" height="315" *ngIf="userImage">
+                                </div>
+                                <div class="col-lg-7 px-xl-10">
+
+                                    <ul class="list-unstyled mb-1-9">
+                                        <form [formGroup]="editProfileForm">
+                                            <li class="mb-2 mt-2 mb-xl-3 display-28">
+                                                <span class="display-26 text-secondary me-2 font-weight-600">First
+                                                    Name:</span>
+                                                <input type="text" placeholder="{{currentUser.firstName| titlecase}}"
+                                                    formControlName="firstName">
+
+                                                <span class="display-26 text-secondary me-2 font-weight-600">Last
+                                                    Name:</span>
+                                                <input type="text" placeholder="{{currentUser.lastName| titlecase}}"
+                                                    formControlName="lastName">
+                                            </li>
+
+                                            <li class="mb-2 mt-2 mb-xl-3 display-28"><span
+                                                    class="display-26 text-secondary me-2 font-weight-600">Eage:</span>
+                                                <input type="number" placeholder="{{currentUser.age}}"
+                                                    formControlName="age">
+                                                Years
+                                            </li>
+                                            <li class="mb-2 mb-xl-3 display-28"><span
+                                                    class="display-26 text-secondary me-2 font-weight-600">Email:</span>
+                                                <input type="email" placeholder="{{currentUser.email}}"
+                                                    formControlName="email">
+                                            </li>
+
+                                            <li class="display-28  mb-xl-3 "><span
+                                                    class="display-26 text-secondary me-2 font-weight-600">Phone:</span>
+                                                <input type="text" placeholder="{{currentUser.phoneNum}}"
+                                                    formControlName="phoneNum">
+                                            </li>
+                                        </form>
+
+                                        <form [formGroup]="addressForm">
+                                            <li class="display-28  mb-xl-3"
+                                                *ngFor="let address of currentUserAddresses ">
+                                                <span
+                                                    class="display-26 text-secondary me-2 font-weight-600">Addresses:</span>
+                                                Type: <input type="text" placeholder="{{address['addressType']}}"
+                                                    formControlName="addressType">
+                                                Details: <input type="text" placeholder="{{address['details']}}"
+                                                    formControlName="details">
+                                            </li>
+                                        </form>
+                                        <li class="display-28  mb-xl-3 ">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">
+                                                <button class="btn btn-success btn-sm rounded-0" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Edit"
+                                                    (click)="handleSave()"><i class="fa fa-edit"></i>
+                                                    Save
+                                                </button>
+                                            </span>
+                                            <span class="display-26 text-secondary me-2 font-weight-600">
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Edit"
+                                                    (click)="toggleForm()"><i class="fa fa-edit"></i>
+                                                    Cancel
+                                                </button>
+                                            </span>
+                                        </li>
+
+                                    </ul>
+
+                                    <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+                                        <li><a href="www.facebook.com"><i class="ti-twitter-alt"></i></a></li>
+                                        <li><a href="#!"><i class="ti-facebook"></i></a></li>
+                                        <li><a href="#!"><i class="ti-pinterest"></i></a></li>
+                                        <li><a href="#!"><i class="ti-instagram"></i></a></li>
+                                    </ul>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -63,5 +159,3 @@
         </div>
     </section>
 </div>
-
-<app-footer></app-footer>
