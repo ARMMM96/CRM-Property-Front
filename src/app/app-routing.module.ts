@@ -17,11 +17,12 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [IsLoggedOutGuard] },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [IsLoggedOutGuard] },
   { path: 'projects', component: ProjectsComponent },
   { path: 'units', component: UnitsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'profile', component: UserComponent, canActivate: [IsLoggedInGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [IsLoggedInGuard] },
   { path: "**", component: NotFoundComponent }
