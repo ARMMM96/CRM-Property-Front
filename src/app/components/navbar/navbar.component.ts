@@ -35,7 +35,7 @@ export class NavbarComponent {
         if (res.data.user.image) {
           this.userImage = `${this.user.mainUrl}/pictures/${res.data.user.image.slice(16)}`
         } else {
-          this.userImage = false
+          this.userImage = `https://thumbs.dreamstime.com/b/no-user-profile-picture-24185395.jpg`
         }
       }
     })
